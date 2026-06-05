@@ -8,12 +8,13 @@ enum CommandType {
     TOUCH,
     CAT,
     PWD,
+    EXIT,
     UNKNOWN
 };
 
 struct Command {
     std::string name;
-    int nb_args;
+    unsigned long nb_args;
     CommandType type;
 };
 

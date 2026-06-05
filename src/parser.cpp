@@ -7,9 +7,10 @@ using namespace std;
 
 const vector<Command> COMMANDS = {
     {"cd", 1, CD},
-    {"touch", 1, TOUCH},
-    {"cat", 1, CAT},
-    {"pwd", 0, PWD}
+    {"touch", 255, TOUCH},
+    {"cat", 255, CAT},
+    {"pwd", 0, PWD},
+    {"exit", 0, EXIT}
 };
 
 vector<string> split(const string& str) {
@@ -23,10 +24,24 @@ vector<string> split(const string& str) {
     return tokens;
 }
 
-void parse_input(string input) {
-    string input_command = split(input).front();
-    std::optional<Command> found_command;
-    
+bool parse_input(string input) {
+    vector<string> flags;
+    vector<string> args;
+    optional<Command> found_command;
+
+    vector<string> split_input = split(input);
+    string input_command = split_input.front();
+    split_input.erase(split_input.begin());
+
+    for (string input_parts: split_input) {
+        if (input_parts.rfind("-", 0) == 0 ) {
+            flags.push_back(input_parts);
+        }
+        else {
+            args.push_back(input_parts);
+        }
+    }
+
     for (Command command: COMMANDS) {
         if (command.name == input_command) {
             found_command = command;
@@ -36,21 +51,28 @@ void parse_input(string input) {
         found_command = {input_command, 0, UNKNOWN};
     }
     
+    if (args.size() > found_command.value().nb_args && found_command.value().type != UNKNOWN) {
+        std::cout << "Too many args for " << found_command.value().name << " command" << std::endl;
+        return false;
+    }
+
     switch (found_command.value().type) {
         case CD:
             std::cout << "found CD" << std::endl;
-            break;
+            return false;
         case TOUCH: 
             std::cout << "found TOUCH" << std::endl;
-            break;
+            return false;
         case CAT:
             std::cout << "found CAT" << std::endl;
-            break;
+            return false;
         case PWD:
             std::cout << "found PWD" << std::endl;
-            break;
+            return false;
+        case EXIT:
+            return true;
         default:
             std::cout << "Unknown command: " << found_command.value().name << std::endl;
-            break;
+            return false;
     }
 }
