@@ -4,8 +4,8 @@ CXXFLAGS = -std=c++17 -Wall -Wextra -pedantic
 TARGET_DIR = target
 TARGET = $(TARGET_DIR)/main
 
-SOURCES = src/main.cpp src/parser.cpp 
-HEADERS = src/parser.hpp src/command.hpp
+SOURCES = src/main.cpp src/parser.cpp src/commands/cd/command.cpp
+HEADERS = src/parser.hpp src/command.hpp src/commands/cd/flag.hpp
 
 all: $(TARGET)
 

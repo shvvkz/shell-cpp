@@ -2,6 +2,7 @@
 #include <optional>
 #include <sstream>
 #include "command.hpp"
+#include "commands/cd/command.hpp"
 #include <vector>
 using namespace std;
 
@@ -58,21 +59,21 @@ bool parse_input(string input) {
 
     switch (found_command.value().type) {
         case CD:
-            std::cout << "found CD" << std::endl;
-            return false;
+            if (args.size() == 0) args.push_back("~");
+            return execute_cd(args.front(), flags);
         case TOUCH: 
             std::cout << "found TOUCH" << std::endl;
-            return false;
+            return true;
         case CAT:
             std::cout << "found CAT" << std::endl;
-            return false;
+            return true;
         case PWD:
             std::cout << "found PWD" << std::endl;
-            return false;
-        case EXIT:
             return true;
+        case EXIT:
+            return false;
         default:
             std::cout << "Unknown command: " << found_command.value().name << std::endl;
-            return false;
+            return true;
     }
 }

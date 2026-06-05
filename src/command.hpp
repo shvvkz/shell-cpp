@@ -1,7 +1,7 @@
 #ifndef COMMAND_HPP
 #define COMMAND_HPP
 
-#include <string>
+using namespace std;
 
 enum CommandType {
     CD,
@@ -13,7 +13,7 @@ enum CommandType {
 };
 
 struct Command {
-    std::string name;
+    string name;
     unsigned long nb_args;
     CommandType type;
 };
