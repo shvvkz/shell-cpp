@@ -1,0 +1,32 @@
+[
+  {
+    "file": "src/main.cpp",
+    "arguments": [
+      "/usr/bin/g++",
+      "-std=c++17",
+      "-Wall",
+      "-Wextra",
+      "-pedantic",
+      "src/main.cpp",
+      "-o",
+      "target/main"
+    ],
+    "directory": "/home/shaakz/documents/cpp-shell",
+    "output": "target/main"
+  },
+  {
+    "file": "src/parser.cpp",
+    "arguments": [
+      "/usr/bin/g++",
+      "-std=c++17",
+      "-Wall",
+      "-Wextra",
+      "-pedantic",
+      "src/parser.cpp",
+      "-o",
+      "target/main"
+    ],
+    "directory": "/home/shaakz/documents/cpp-shell",
+    "output": "target/main"
+  }
+]
