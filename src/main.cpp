@@ -16,7 +16,8 @@ int main() {
         std::cout << ps1();
         std::getline(std::cin, user_input);
         if (!parse_input(user_input)) {
-            return 0;
+            return 1;
         }
+        std::cout << std::endl;
     }
 }
