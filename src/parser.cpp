@@ -3,6 +3,7 @@
 #include <sstream>
 #include "command.hpp"
 #include "commands/cd/command.hpp"
+#include "commands/pwd/command.hpp"
 #include <vector>
 using namespace std;
 
@@ -68,8 +69,7 @@ bool parse_input(string input) {
             std::cout << "found CAT" << std::endl;
             return true;
         case PWD:
-            std::cout << "found PWD" << std::endl;
-            return true;
+            return execute_pwd(flags);
         case EXIT:
             return false;
         default:
