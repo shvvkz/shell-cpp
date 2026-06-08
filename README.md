@@ -38,7 +38,7 @@ pwd
 - [x] recreate cd 
 - [x] recreate pwd
 - [x] recreate touch
-- [ ] recreate cat
+- [x] recreate cat
 - [ ] recreate ls
 - [ ] recreate rm
 - [ ] recreate mkdir

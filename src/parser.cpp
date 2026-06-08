@@ -5,6 +5,7 @@
 #include "commands/cd/command.hpp"
 #include "commands/pwd/command.hpp"
 #include "commands/touch/command.hpp"
+#include "commands/cat/command.hpp"
 #include <vector>
 using namespace std;
 
@@ -66,8 +67,7 @@ bool parse_input(string input) {
         case TOUCH: 
             return execute_touch(args, flags);
         case CAT:
-            std::cout << "found CAT" << std::endl;
-            return true;
+            return execute_cat(args, flags);
         case PWD:
             return execute_pwd(flags);
         case EXIT:

@@ -37,7 +37,7 @@ bool execute_cd(string arg, vector<string> flags) {
         filesystem::current_path(final_arg, err);
 
         if (err) {
-            std::cout << "cd: \"" << final_arg << "\" " << err.message() << std::endl;
+            std::cerr << "cd: \"" << final_arg << "\" " << err.message() << std::endl;
             return true;
         }
         return true;
